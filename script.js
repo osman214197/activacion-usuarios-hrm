@@ -3,6 +3,8 @@ const progressBar = document.querySelector('#progressBar');
 const progressText = document.querySelector('#progressText');
 const fileInput = document.querySelector('#firma');
 const fileLabel = document.querySelector('#fileLabel');
+const fileHint = document.querySelector('#fileHint');
+const signaturePreview = document.querySelector('#signaturePreview');
 const signatureNote = document.querySelector('#signatureNote');
 const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwJq1W4VET54ex4S_oMvHpTbHZr0sVUYs9aB0zCt-rf_cIvbAlNRflqsoTygR2t23Zg/exec';
 
@@ -73,10 +75,21 @@ fileInput.addEventListener('change', () => {
   const file = fileInput.files[0];
   if (file && file.size > 10 * 1024 * 1024) {
     fileLabel.textContent = 'El archivo supera los 10 MB';
+    fileHint.textContent = 'Selecciona una imagen de máximo 10 MB.';
+    signaturePreview.hidden = true;
+    signaturePreview.removeAttribute('src');
     fileInput.value = '';
     return;
   }
   fileLabel.textContent = file ? file.name : 'Subir imagen de la firma';
+  fileHint.textContent = file ? 'Imagen seleccionada correctamente.' : 'PNG, JPG o WEBP · Máximo 10 MB';
+  if (file) {
+    signaturePreview.src = URL.createObjectURL(file);
+    signaturePreview.hidden = false;
+  } else {
+    signaturePreview.hidden = true;
+    signaturePreview.removeAttribute('src');
+  }
   updateSignatureRequirement();
 });
 
@@ -131,6 +144,9 @@ document.querySelector('#newRequest').addEventListener('click', () => {
   form.hidden = false;
   document.querySelector('#successMessage').hidden = true;
   fileLabel.textContent = 'Subir imagen de la firma';
+  fileHint.textContent = 'PNG, JPG o WEBP · Máximo 10 MB';
+  signaturePreview.hidden = true;
+  signaturePreview.removeAttribute('src');
   updateSignatureRequirement();
   updateProgress();
 });
