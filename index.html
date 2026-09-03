@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Formulario de activación de usuario para el Hospital Regional de Moniquirá E.S.E.">
+  <title>Activación de usuario | Hospital Regional de Moniquirá</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand-lockup">
+        <div class="brand-mark"><img src="loho hrm.jpg" alt="Hospital Regional de Moniquirá E.S.E."></div>
+        <div>
+          <p class="eyebrow">Hospital Regional de Moniquirá E.S.E.</p>
+          <p class="brand-name">Gestión TIC</p>
+        </div>
+      </div>
+      <div class="secure-label"><span class="status-dot"></span>Formulario seguro</div>
+    </header>
+
+    <main>
+      <section class="intro-section">
+        <div class="intro-copy">
+          <p class="eyebrow accent">Gestión de accesos</p>
+          <h1>Activación de usuario</h1>
+          <p class="intro-text">Completa la información para solicitar la creación de tu cuenta institucional. Revisa tus datos antes de enviar la solicitud.</p>
+        </div>
+        <div class="progress-card" aria-label="Progreso del formulario">
+          <div class="progress-top"><span>Solicitud nueva</span><strong id="progressText">0%</strong></div>
+          <div class="progress-track"><span id="progressBar"></span></div>
+          <p>Los campos marcados con <span class="required">*</span> son obligatorios.</p>
+        </div>
+      </section>
+
+      <form id="activationForm" novalidate>
+        <section class="form-section" data-section="1">
+          <div class="section-heading"><span class="section-number">01</span><div><p class="eyebrow">Identificación</p><h2>Cuéntanos sobre ti</h2></div></div>
+          <div class="field-grid">
+            <label class="field"><span>Cédula <b>*</b></span><input name="cedula" type="text" inputmode="numeric" required placeholder="Número de documento"><small class="error-message"></small></label>
+            <label class="field"><span>Nombre completo <b>*</b></span><input name="nombre" type="text" required placeholder="Nombres y apellidos"><small class="error-message"></small></label>
+            <label class="field field-wide"><span>Lugar de expedición del documento de identidad <b>*</b></span><input name="expedicion" type="text" required placeholder="Ciudad o municipio"><small class="error-message"></small></label>
+            <label class="field"><span>Dirección de residencia <b>*</b></span><input name="direccion" type="text" required placeholder="Dirección actual"><small class="error-message"></small></label>
+            <label class="field"><span>Teléfono móvil <b>*</b></span><input name="telefono" type="tel" required placeholder="300 000 0000"><small class="error-message"></small></label>
+            <label class="field"><span>Correo electrónico <b>*</b></span><input name="correo" type="email" required placeholder="nombre@ejemplo.com"><small class="error-message"></small></label>
+            <label class="field"><span>Ciudad de residencia <b>*</b></span><input name="ciudad" type="text" required placeholder="Ciudad o municipio"><small class="error-message"></small></label>
+            <label class="field"><span>Profesión y/o especialidad <b>*</b></span><input name="profesion" type="text" required placeholder="Tu profesión o especialidad"><small class="error-message"></small></label>
+          </div>
+        </section>
+
+        <section class="form-section" data-section="2">
+          <div class="section-heading"><span class="section-number">02</span><div><p class="eyebrow">Creación de usuario</p><h2>Define tu perfil institucional</h2></div></div>
+          <div class="subsection"><p class="eyebrow">Información del área</p><div class="field-grid compact"><fieldset class="choice-group field-wide"><legend>Nombre del área o servicio <b>*</b></legend><div class="choice-grid"> 
+            <label class="choice"><input type="radio" name="area" value="Administrativo" required><span>Administrativo</span></label><label class="choice"><input type="radio" name="area" value="Agendamiento"><span>Agendamiento</span></label><label class="choice"><input type="radio" name="area" value="Urgencias"><span>Urgencias</span></label><label class="choice"><input type="radio" name="area" value="Hospitalización"><span>Hospitalización</span></label><label class="choice"><input type="radio" name="area" value="Ginecología"><span>Ginecología</span></label><label class="choice"><input type="radio" name="area" value="Laboratorio"><span>Laboratorio</span></label><label class="choice"><input type="radio" name="area" value="UCI"><span>UCI</span></label><label class="choice"><input type="radio" name="area" value="Radiología"><span>Radiología</span></label><label class="choice"><input type="radio" name="area" value="Consulta externa"><span>Consulta externa</span></label><label class="choice"><input type="radio" name="area" value="Farmacia"><span>Farmacia</span></label><label class="choice"><input type="radio" name="area" value="Cirugía"><span>Cirugía</span></label><label class="choice"><input type="radio" name="area" value="Hemodinamia"><span>Hemodinamia</span></label>
+          </div><small class="error-message"></small></fieldset>
+            <label class="field"><span>Nombre del líder <b>*</b></span><input name="lider" type="text" required placeholder="Nombre completo"><small class="error-message"></small></label>
+            <label class="field"><span>Cargo del líder <b>*</b></span><input name="cargoLider" type="text" required placeholder="Cargo en la institución"><small class="error-message"></small></label>
+          </div></div>
+          <div class="subsection"><p class="eyebrow">Tipo de perfil</p><fieldset class="choice-group"><legend>Selecciona el perfil que vas a ocupar <b>*</b></legend><div class="choice-grid three"><label class="choice"><input type="radio" name="perfil" value="Administrativo" required><span>Administrativo</span></label><label class="choice"><input type="radio" name="perfil" value="Asistencial"><span>Asistencial</span></label><label class="choice"><input type="radio" name="perfil" value="CEI"><span>CEI</span></label></div><small class="error-message"></small></fieldset><label class="field field-top-gap"><span>Rol del usuario</span><input name="rol" type="text" placeholder="Función que realizarás en tu área de trabajo"><small class="hint">Nombra la función o rol que realizarás en tu área de trabajo.</small></label></div>
+          <div class="subsection"><p class="eyebrow">Tipo de vinculación</p><fieldset class="choice-group"><legend>Selecciona tu tipo de vinculación con el hospital</legend><div class="choice-grid three"><label class="choice"><input type="radio" name="vinculacion" value="Planta"><span>Planta</span></label><label class="choice"><input type="radio" name="vinculacion" value="Contratista"><span>Contratista</span></label><label class="choice"><input type="radio" name="vinculacion" value="Aprendiz"><span>Aprendiz</span></label><label class="choice"><input type="radio" name="vinculacion" value="Interno"><span>Interno</span></label><label class="choice"><input type="radio" name="vinculacion" value="Pasantía"><span>Pasantía</span></label><label class="choice"><input type="radio" name="vinculacion" value="Temporal"><span>Temporal</span></label><label class="choice"><input type="radio" name="vinculacion" value="Residente"><span>Residente</span></label><label class="choice other-choice"><input type="radio" name="vinculacion" value="Otro"><span>Otro</span><input name="otraVinculacion" type="text" placeholder="Especifica"></label></div></fieldset></div>
+        </section>
+
+        <section class="form-section" data-section="3">
+          <div class="section-heading"><span class="section-number">03</span><div><p class="eyebrow">Responsabilidad</p><h2>Uso de las cuentas institucionales</h2></div></div>
+          <div class="legal-copy"><p>Los funcionarios que firmamos este documento recibimos a entera satisfacción el identificador de usuario y la clave asignada en los sistemas de información requeridos para el desempeño diario de las funciones asignadas, propiedad del Hospital Regional de Moniquirá E.S.E.</p><p>Todos los recursos de Tecnología de Información del Hospital son para su uso en los servicios que ofrece. No está permitido utilizar estos recursos para actividades diferentes a las relacionadas con la entidad o con propósitos personales. Todas las operaciones realizadas con estas cuentas serán responsabilidad del funcionario titular.</p><p>Por medio de la presente autorizo a la Dirección de Sistemas a extraer la información del correo institucional asignado, para uso laboral e institucional exclusivo, en caso de mi ausencia en la institución.</p></div>
+          <label class="consent"><input type="checkbox" name="aceptacion" required><span>He leído y acepto las condiciones de uso de las cuentas institucionales. <b>*</b></span></label>
+        </section>
+
+        <section class="form-section" data-section="4">
+          <div class="section-heading"><span class="section-number">04</span><div><p class="eyebrow">Solo profesionales de salud</p><h2>Firma digital</h2></div></div>
+          <p id="signatureNote" class="section-note">Este paso es opcional. Adjunta una imagen clara de tu firma si aplica a tu solicitud.</p>
+          <label class="upload-zone" for="firma"><input id="firma" name="firma" type="file" accept="image/*,.drawing"><span class="upload-icon">↥</span><strong id="fileLabel">Subir imagen de la firma</strong><span>PNG, JPG o archivo compatible · Máximo 10 MB</span><small class="error-message"></small></label>
+        </section>
+
+        <div class="form-actions"><p><span class="required">*</span> Revisa que la información sea correcta antes de enviar.</p><button class="submit-button" type="submit">Enviar solicitud <span aria-hidden="true">→</span></button></div>
+      </form>
+      <div id="successMessage" class="success-message" role="status" hidden><span class="success-icon">✓</span><div><p class="eyebrow success-eyebrow">Proceso completado</p><h2>Solicitud enviada con éxito</h2><p>Tu información fue registrada correctamente. Gestión TIC revisará la solicitud y se pondrá en contacto contigo.</p><p id="submittedId" class="submitted-id"></p><button id="newRequest" type="button">Crear otra solicitud</button></div></div>
+    </main>
+    <footer><span>Hospital Regional de Moniquirá E.S.E.</span><span>Dirección de Sistemas · 2026</span></footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
