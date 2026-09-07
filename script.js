@@ -124,9 +124,13 @@ form.addEventListener('submit', (event) => {
     });
   };
 
-  const waitForConfirmation = (id, attempts = 10) => new Promise((resolve, reject) => {
+  const waitForConfirmation = (id, attempts = 30) => new Promise((resolve, reject) => {
     const callbackName = `confirm_${Date.now()}_${Math.random().toString(36).slice(2)}`;
     const script = document.createElement('script');
+    const retry = () => {
+      if (attempts <= 1) return reject(new Error('El registro no fue confirmado en la hoja después de 30 segundos.'));
+      setTimeout(() => waitForConfirmation(id, attempts - 1).then(resolve, reject), 1000);
+    };
     const cleanup = () => {
       delete window[callbackName];
       script.remove();
@@ -134,14 +138,13 @@ form.addEventListener('submit', (event) => {
     window[callbackName] = (result) => {
       cleanup();
       if (result.ok) return resolve();
-      if (attempts <= 1) return reject(new Error('El registro no fue confirmado en la hoja.'));
-      setTimeout(() => waitForConfirmation(id, attempts - 1).then(resolve, reject), 1000);
+      retry();
     };
     script.onerror = () => {
       cleanup();
-      reject(new Error('No fue posible verificar el registro.'));
+      retry();
     };
-    script.src = `${GOOGLE_APPS_SCRIPT_URL}?action=check&id=${encodeURIComponent(id)}&callback=${callbackName}`;
+    script.src = `${GOOGLE_APPS_SCRIPT_URL}?action=check&id=${encodeURIComponent(id)}&callback=${callbackName}&cacheBust=${Date.now()}`;
     document.body.appendChild(script);
   });
 
@@ -160,10 +163,10 @@ form.addEventListener('submit', (event) => {
       successMessage.style.display = 'flex';
       successMessage.scrollIntoView({ behavior: 'smooth', block: 'start' });
     })
-    .catch(() => {
+    .catch((error) => {
       submitButton.disabled = false;
       submitButton.innerHTML = 'Reintentar envío <span aria-hidden="true">→</span>';
-      alert('No fue posible guardar la solicitud. Verifica la conexión y vuelve a intentarlo.');
+      alert(`No fue posible confirmar la solicitud. ${error.message} Verifica la conexión y vuelve a intentarlo.`);
     });
 });
 
