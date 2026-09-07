@@ -99,6 +99,12 @@ fileInput.addEventListener('change', () => {
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
+  const isAssistance = form.querySelector('input[name="perfil"]:checked')?.value === 'Asistencial';
+  if (isAssistance && !fileInput.files[0]) {
+    alert('Por favor adjunte la firma.');
+    fileInput.focus();
+    return;
+  }
   const firstInvalid = validateForm();
   if (firstInvalid) { firstInvalid.focus(); return; }
   const submitButton = form.querySelector('.submit-button');
